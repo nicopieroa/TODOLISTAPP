@@ -1,0 +1,220 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lexend", sans-serif;
+  background-color: #0f0f0f;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 100vw;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+.addTaskButton {
+  width: 100px;
+  height: 100px;
+  align-self: center;
+  border: none;
+  padding: 5px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.addTaskButton:hover,
+.addTaskButton:active {
+  padding: 0;
+}
+
+.addTaskButton img {
+  width: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 5%;
+  width: 100%;
+  height: 100%;
+}
+
+form {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  background-color: transparent;
+  padding: 5%;
+  border-radius: 20px;
+  border: white 2px solid;
+}
+
+form input,
+form select {
+  padding: 2.5%;
+  border-radius: 10px;
+  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.199);
+  color: white;
+}
+
+.taskColor-input {
+  width: 35px;
+  height: 35px;
+  padding: 2px;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.671);
+}
+
+form button {
+  width: auto;
+  align-self: center;
+  padding: 2.5% 5%;
+  background-color: rgb(93, 196, 93);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+form button:hover,
+form button:active {
+  background-color: rgb(67, 165, 67);
+}
+
+.errorMessage {
+  display: none;
+  color: rgb(241, 82, 82);
+  align-self: center;
+}
+
+.components {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: #313233;
+  padding: 5%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.components::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgb(102, 100, 100);
+  border-radius: 10px;
+}
+
+.components::-webkit-scrollbar-thumb {
+  background: rgb(48, 47, 47);
+  border-radius: 10px;
+}
+
+.toDoComponent,
+.doneComponent {
+  max-height: 350px;
+  overflow: auto;
+}
+
+h2 {
+  font-size: 38px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 5%;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  border: rgba(255, 255, 255, 0.178) 2px solid;
+  list-style: none;
+}
+
+.title-checkedButton-container,
+.tag-editButton-deleteButton-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+.checkedButton,
+.deleteButton,
+.editButton {
+  color: white;
+  width: 80px;
+  padding: 5px 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 800;
+  border: none;
+}
+
+.unDone,
+.done:hover,
+.done:active
+/* .checkedButton */ {
+  background-color: rgb(221, 158, 158);
+}
+
+.unDone:hover,
+.unDone:active,
+.done 
+/* .checkedButton:hover,
+.checkedButton:active */ {
+  background-color: rgb(65, 141, 65);
+}
+
+.editButton {
+  background-color: white;
+  color: black;
+}
+
+.editButton:hover,
+.editButton:active {
+  background-color: black;
+  color: white;
+}
+
+.deleteButton {
+  background-color: red;
+}
+
+.deleteButton:hover,
+.deleteButton:active {
+  background-color: rgb(134, 4, 4);
+}
+
+.tag {
+  width: auto;
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 2.5px 15px;
+  font-weight: 600;
+}

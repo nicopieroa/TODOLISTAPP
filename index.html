@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="/Icons/favIcon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Todo List</title>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+
+    <main>
+      <button id="addNewTaskButton" type="button" class="addTaskButton">
+        <img src="/Icons/add.svg" alt="Add new task" />
+      </button>
+
+      <form id="formToCreateTask" action="">
+        <label for="Title Task">Title Task</label>
+        <input
+          id="taskTitle-input"
+          type="text"
+          placeholder="Study, House Cleaning, Hair Cut, etc"
+        />
+
+        <label for="Description">Description</label>
+        <input
+          id="taskDescription-input"
+          type="text"
+          placeholder="Study for math exam."
+        />
+
+        <label for="Tag">Tag</label>
+        <input
+          id="taskTag-input"
+          type="text"
+          placeholder="School, Home, Health"
+        />
+
+        <label for="colorSelection">Color</label>
+        <input
+          id="taskColor-input"
+          type="color"
+          class="taskColor-input"
+          value="#ffffff"
+        />
+
+        <button id="formSubmitButton" type="submit">ADD TASK</button>
+
+        <span id="errorMessage" class="errorMessage"></span>
+      </form>
+
+      <div class="components toDoComponent">
+        <h2>To do</h2>
+
+        <ul id="todoTaskList">
+          <!-- <li id="task">
+            <div class="title-checkedButton-container">
+              <h3 id="taskTitle">Task Title</h3>
+
+              <button
+                id="checkedButtonTask"
+                class="checkedButton"
+                type="button"
+              >
+                DONE
+              </button>
+            </div>
+
+            <p id="taskDescription">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit
+              soluta culpa est! Veritatis error excepturi officiis vero
+              inventore quo tempore eligendi earum in? Ducimus laudantium
+              corrupti dolore sapiente architecto ut.
+            </p>
+
+            <div class="tag-editButton-deleteButton-container">
+              <span id="taskTag" class="tag">Task Title</span>
+              <button type="button" class="editButton">EDIT</button>
+              <button type="button" class="deleteButton">DELETE</button>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+
+      <div class="components doneComponent">
+        <h2>Done</h2>
+
+        <ul id="doneTaskList" class="list"></ul>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
