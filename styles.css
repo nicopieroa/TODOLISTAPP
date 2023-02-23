@@ -123,7 +123,7 @@ form button:active {
 
 .toDoComponent,
 .doneComponent {
-  max-height: 350px;
+  max-height: 550px;
   overflow: auto;
 }
 
@@ -150,10 +150,12 @@ li {
   border-radius: 20px;
   border: rgba(255, 255, 255, 0.178) 2px solid;
   list-style: none;
+
+  background-color: rgb(48, 126, 100);
 }
 
-.title-checkedButton-container,
-.tag-editButton-deleteButton-container {
+.title-tag-container,
+.delete-edit-checked-buttons-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -164,57 +166,44 @@ h3 {
   font-size: 24px;
 }
 
-.checkedButton,
-.deleteButton,
-.editButton {
-  color: white;
-  width: 80px;
-  padding: 5px 5px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 800;
-  border: none;
-}
-
-.unDone,
-.done:hover,
-.done:active
-/* .checkedButton */ {
-  background-color: rgb(221, 158, 158);
-}
-
-.unDone:hover,
-.unDone:active,
-.done 
-/* .checkedButton:hover,
-.checkedButton:active */ {
-  background-color: rgb(65, 141, 65);
-}
-
-.editButton {
-  background-color: white;
-  color: black;
-}
-
-.editButton:hover,
-.editButton:active {
-  background-color: black;
-  color: white;
-}
-
-.deleteButton {
-  background-color: red;
-}
-
-.deleteButton:hover,
-.deleteButton:active {
-  background-color: rgb(134, 4, 4);
-}
-
 .tag {
   width: auto;
-  border: 2px solid white;
+  border: 1px solid white;
   border-radius: 20px;
   padding: 2.5px 15px;
   font-weight: 600;
+}
+
+.deleteButton,
+.editButton,
+.checkedButton {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 50%;
+  background-color: transparent;
+  padding: 0;
+}
+
+.deleteButton img,
+.editButton img,
+.checkedButton img {
+  max-width: 100%;
+  background-image: transparent;
+  padding: 7px;
+}
+
+.deleteButton:hover,
+.deleteButton:active,
+.editButton:hover,
+.editButton:active,
+.checkedButton:hover,
+.checkedButton:active {
+  background-color: rgb(34, 33, 33);
+  transition: 200ms all;
+}
+
+.taskDone {
+  background-color: rgb(34, 33, 33);
 }

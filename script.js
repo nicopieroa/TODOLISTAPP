@@ -8,7 +8,6 @@ const taskColorInput = document.getElementById("taskColor-input");
 const errorMessage = document.getElementById("errorMessage");
 
 const todoTaskList = document.getElementById("todoTaskList");
-// const dondeTaskList = document.getElementById("doneTaskList");
 
 let tasks = [];
 
@@ -52,10 +51,9 @@ function createTask() {
     taskTitelInput.value = "";
     taskDescriptionInput.value = "";
     taskTagInput.value = "";
-    taskColorInput.value = "#ffffff";
 
-    console.log(task);
-    console.log(tasks);
+    formToCreateTask.style.display = "none";
+    addNewTaskButton.style.display = "block";
   }
 }
 
@@ -65,26 +63,58 @@ function renderTask() {
   tasks.forEach((item, i) => {
     todoTaskList.innerHTML += ` 
     <li id=${i} style='background-color: ${item.color}'>
-      <div class="title-checkedButton-container">
+      <div class="title-tag-container">
         <h3 id="taskTitle">${item.title}</h3>
 
-          <button
-            id="checkedButtonTask" class="checkedButton ${
-              item.checked ? "done" : "unDone"
-            }" type="button">
-                DONE
-          </button>
+        <span id="taskTag" class="tag">${item.tag}</span>
       </div>
       
         <p id="taskDescription">${item.description}</p>
       
-        <div class="tag-editButton-deleteButton-container">
-          <span id="taskTag" class="tag">${item.tag}</span>
+        <div class="delete-edit-checked-buttons-container">
+          <button type="button" class="deleteButton">
+              <img src="Icons/tash.svg" alt="A trash" data-action='delete'/>
+          </button>
 
-          <button type="button" class="editButton">EDIT</button>
-          <button type="button" class="deleteButton">DELETE</button>
+          <button type="button" class="editButton">
+              <img src="Icons/edit.svg" alt="A pen" data-action='edit'/>
+          </button>
+
+          <button class="checkedButton ${item.checked ? "taskDone" : ""} 
+            "type="button">
+              <img src="Icons/checked.svg" alt="A check" data-action='check'/>
+          </button>        
         </div>
     </li> `;
-    console.log(i);
   });
+}
+
+todoTaskList.addEventListener("click", (e) => {
+  const eventTarget = e.target;
+  const parentEventTarget = eventTarget.parentNode;
+  const grandParent = parentEventTarget.parentNode;
+  const grandGrandParent = grandParent.parentNode;
+
+  if (grandParent.classLis === "delete-edit-checked-buttons-container") return;
+
+  const idTask = Number(grandGrandParent.id);
+  const action = eventTarget.dataset.action;
+
+  if (action === "check") taskChecked(idTask);
+
+  // if (action === "edit") editTask(idTask);
+  // if (action === "delete") deleteTask(idTask);
+});
+
+function taskChecked(idTask) {
+  tasks = tasks.map((item, i) => {
+    return {
+      ...item,
+      checked: i === idTask ? !item.checked : item.checked,
+    };
+  });
+
+  console.log(tasks);
+
+  renderTask();
 }
