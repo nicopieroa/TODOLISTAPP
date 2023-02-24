@@ -10,6 +10,7 @@ const errorMessage = document.getElementById("errorMessage");
 const todoTaskList = document.getElementById("todoTaskList");
 
 let tasks = [];
+let idTaskToEdit = -1;
 
 addNewTaskButton.addEventListener("click", () => {
   addNewTaskButton.style.display = "none";
@@ -36,15 +37,32 @@ function createTask() {
     errorMessage.style.display = "block";
     errorMessage.innerText = "Title and tag inputs can not be empaty";
   } else {
-    const task = {
-      title: titleValue,
-      description: descriptionValue,
-      tag: tagValue,
-      color: colorValue,
-      checked: false,
-    };
+    if (idTaskToEdit >= 0) {
+      tasks = tasks.map((item, i) => {
+        return {
+          ...item,
+          title: i === idTaskToEdit ? titleValue : item.title,
 
-    tasks.push(task);
+          description: i === idTaskToEdit ? descriptionValue : item.description,
+
+          tag: i === idTaskToEdit ? tagValue : item.tag,
+
+          color: i === idTaskToEdit ? colorValue : item.color,
+        };
+      });
+
+      idTaskToEdit = -1;
+    } else {
+      const task = {
+        title: titleValue,
+        description: descriptionValue,
+        tag: tagValue,
+        color: colorValue,
+        checked: false,
+      };
+
+      tasks.push(task);
+    }
 
     errorMessage.style.display = "none";
 
@@ -101,8 +119,7 @@ todoTaskList.addEventListener("click", (e) => {
   const action = eventTarget.dataset.action;
 
   if (action === "check") taskChecked(idTask);
-
-  // if (action === "edit") editTask(idTask);
+  if (action === "edit") editTask(idTask);
   // if (action === "delete") deleteTask(idTask);
 });
 
@@ -114,7 +131,16 @@ function taskChecked(idTask) {
     };
   });
 
-  console.log(tasks);
-
   renderTask();
+}
+
+function editTask(idTask) {
+  formToCreateTask.style.display = "flex";
+
+  taskTitelInput.value = tasks[idTask].title;
+  taskDescriptionInput.value = tasks[idTask].description;
+  taskTagInput.value = tasks[idTask].tag;
+  taskColorInput.value = tasks[idTask].color;
+
+  idTaskToEdit = idTask;
 }
