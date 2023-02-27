@@ -62,6 +62,7 @@ function createTask() {
       };
 
       tasks.push(task);
+      tasks.reverse();
     }
 
     errorMessage.style.display = "none";
@@ -120,7 +121,7 @@ todoTaskList.addEventListener("click", (e) => {
 
   if (action === "check") taskChecked(idTask);
   if (action === "edit") editTask(idTask);
-  // if (action === "delete") deleteTask(idTask);
+  if (action === "delete") deleteTask(idTask);
 });
 
 function taskChecked(idTask) {
@@ -143,4 +144,18 @@ function editTask(idTask) {
   taskColorInput.value = tasks[idTask].color;
 
   idTaskToEdit = idTask;
+}
+
+function deleteTask(idTask) {
+  for (let i = 0; i < tasks.length; i++) {
+    if (idTask === i) {
+      tasks.splice(i, 1);
+    }
+  }
+
+  idTaskToEdit = -1;
+
+  renderTask();
+
+  console.log(tasks);
 }
