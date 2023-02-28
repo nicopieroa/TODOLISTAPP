@@ -107,7 +107,7 @@ form button:active {
   background-color: #313233;
   padding: 5%;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .components::-webkit-scrollbar {
@@ -206,4 +206,10 @@ h3 {
 
 .taskDone {
   background-color: rgb(34, 33, 33);
+}
+
+@media (min-width: 450px) {
+  main {
+    max-width: 500px;
+  }
 }
