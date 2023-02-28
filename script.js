@@ -9,8 +9,10 @@ const errorMessage = document.getElementById("errorMessage");
 
 const todoTaskList = document.getElementById("todoTaskList");
 
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let idTaskToEdit = -1;
+
+renderTask();
 
 addNewTaskButton.addEventListener("click", () => {
   addNewTaskButton.style.display = "none";
@@ -22,6 +24,7 @@ formToCreateTask.addEventListener("submit", (e) => {
 
   createTask();
   renderTask();
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 });
 
 function createTask() {
@@ -77,6 +80,12 @@ function createTask() {
 }
 
 function renderTask() {
+  if (tasks.length === 0) {
+    todoTaskList.innerHTML =
+      "<h3 style='align-self: center'>You have nothing to do</h3>";
+    return;
+  }
+
   todoTaskList.innerHTML = "";
 
   tasks.forEach((item, i) => {
@@ -133,6 +142,7 @@ function taskChecked(idTask) {
   });
 
   renderTask();
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function editTask(idTask) {
@@ -156,6 +166,5 @@ function deleteTask(idTask) {
   idTaskToEdit = -1;
 
   renderTask();
-
-  console.log(tasks);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
